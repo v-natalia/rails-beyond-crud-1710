@@ -7,5 +7,26 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  resources :restaurants
+  # resources :restaurants do
+  #   collection do # peut affecter tous les restaus
+  #     get :top
+  #   end
+  # end
+
+  resources :restaurants do
+    resources :reviews, only: [:new]
+
+    collection do # peut affecter tous les restaus #n'a pas besoin d'id
+      get :top
+    end
+
+    member do # correspond a 1 restau à la fois #j'ai besoin d'id
+      get :chef
+    end
+
+  end
+
+  # resources :restaurants do
+  #   resources :reviews
+  # end
 end

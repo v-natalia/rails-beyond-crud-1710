@@ -4,7 +4,8 @@
 
 <div>
   <%= link_to "Edit this restaurant", edit_restaurant_path(@restaurant) %> |
-  <%= link_to "Back to restaurants", restaurants_path %>
+  <%= link_to "Back to restaurants", restaurants_path %> |
+  <%= link_to "Who's the chef?", chef_restaurant_path(@restaurant) %>
 
   <%= button_to "Destroy this restaurant", @restaurant, method: :delete %>
 </div>
