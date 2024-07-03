@@ -13,8 +13,9 @@ Rails.application.routes.draw do
   #   end
   # end
 
+  resources :reviews, only: [:destroy] #actions non nestés car member
   resources :restaurants do
-    resources :reviews, only: [:new]
+    resources :reviews, only: [:new, :create] #actions nestés car collection
 
     collection do # peut affecter tous les restaus #n'a pas besoin d'id
       get :top
@@ -23,10 +24,7 @@ Rails.application.routes.draw do
     member do # correspond a 1 restau à la fois #j'ai besoin d'id
       get :chef
     end
-
   end
 
-  # resources :restaurants do
-  #   resources :reviews
-  # end
+
 end

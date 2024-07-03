@@ -1,7 +1,14 @@
 <p style="color: green"><%= notice %></p>
 
 <%= render @restaurant %>
+<div>
+  <h3>Reviews</h3>
+  <% @restaurant.reviews.each do |review| %>
+  <p>- <%= review.content %></p>
+  <%= link_to "Delete", review_path(review), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}  %>
+  <% end %>
 
+</div>
 <div>
   <%= link_to "Edit this restaurant", edit_restaurant_path(@restaurant) %> |
   <%= link_to "Back to restaurants", restaurants_path %> |
